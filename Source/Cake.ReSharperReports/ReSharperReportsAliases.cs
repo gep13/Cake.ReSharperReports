@@ -22,7 +22,7 @@ namespace Cake.ReSharperReports
     public static class ReSharperReportsAliases
     {
         /// <summary>
-        /// Runs ReSharperReports against the specified input FilePath, and outputs to specified output FilePath
+        /// Runs ReSharperReports against the specified input FilePath, and outputs to specified output FilePath.
         /// </summary>
         /// <param name="context">The context.</param>
         /// <param name="inputFilePath">The input file path.</param>
@@ -44,7 +44,7 @@ namespace Cake.ReSharperReports
         }
 
         /// <summary>
-        /// Runs ReSharperReports against the specified input FilePath, and outputs to specified output FilePath with the specified ReSharperReportsSettings
+        /// Runs ReSharperReports against the specified input FilePath, and outputs to specified output FilePath with the specified ReSharperReportsSettings.
         /// </summary>
         /// <param name="context">The context.</param>
         /// <param name="inputFilePath">The input file path.</param>
