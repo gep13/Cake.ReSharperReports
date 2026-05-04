@@ -14,8 +14,7 @@ BuildParameters.SetParameters(context: Context,
                               shouldGenerateDocumentation: false,
                               shouldRunCodecov: false,
                               shouldRunInspectCode: false,
-                              preferredBuildProviderType: BuildProviderType.GitHubActions,
-                              testFilePattern: "DO_NOT_RUN_TESTS");
+                              preferredBuildProviderType: BuildProviderType.GitHubActions);
 
 BuildParameters.PrintParameters(Context);
 
