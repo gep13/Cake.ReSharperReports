@@ -20,7 +20,7 @@
     <PackageIconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/cake-contrib/Cake.ReSharperReports.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>Cake;Script;Build;ReSharperReports</PackageTags>
+    <PackageTags>cake;cake-build;cake-addin;addin;script;build;resharper;reports</PackageTags>
     <PackageReleaseNotes>https://github.com/cake-contrib/Cake.ReSharperReports/releases/tag/$(Version)</PackageReleaseNotes>
   </PropertyGroup>
 
@@ -32,9 +32,23 @@
     <AdditionalFiles Include="stylecop.json" />
   </ItemGroup>
 
+  <!--
+    CCG0007 suppressions — Cake.Core 1.0.0 also targets net461 and net5.0,
+    but both are EOL and not reliably installable from `actions/setup-dotnet`
+    in our `[ windows-2025, ubuntu-24.04 ]` matrix. netstandard2.0 covers
+    every Cake-1-era host we care about (cake.tool 1.x and 2.x both load
+    netstandard2.0 addin DLLs natively). CCG0009 ("recommended Cake 6.0.0")
+    stays as a warning — we're deliberately on Cake.Core 1.0.0 for this
+    release; it resolves naturally at the eventual 6.0.0 catch-up.
+  -->
   <ItemGroup>
-    <PackageReference Include="Cake.Common" Version="0.33.0" PrivateAssets="All" />
-    <PackageReference Include="Cake.Core" Version="0.33.0" PrivateAssets="All" />
+    <CakeContribGuidelinesOmitTargetFramework Include="net461" />
+    <CakeContribGuidelinesOmitTargetFramework Include="net5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Cake.Common" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="Cake.Core" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="Cake.Addin.Analyzer" Version="0.1.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
