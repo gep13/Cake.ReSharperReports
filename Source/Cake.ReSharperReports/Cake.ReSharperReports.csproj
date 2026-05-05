@@ -1,9 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net6.0</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <DebugType>full</DebugType>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
@@ -33,22 +32,23 @@
   </ItemGroup>
 
   <!--
-    CCG0007 suppressions — Cake.Core 1.0.0 also targets net461 and net5.0,
-    but both are EOL and not reliably installable from `actions/setup-dotnet`
-    in our `[ windows-2025, ubuntu-24.04 ]` matrix. netstandard2.0 covers
-    every Cake-1-era host we care about (cake.tool 1.x and 2.x both load
-    netstandard2.0 addin DLLs natively). CCG0009 ("recommended Cake 6.0.0")
-    stays as a warning — we're deliberately on Cake.Core 1.0.0 for this
+    CCG0007 suppressions — Cake.Core 2.0.0 dropped netstandard2.0 (the
+    Cake-1 TFM); its required-target list is now netcoreapp3.1 + net5.0
+    + net6.0. netcoreapp3.1 and net5.0 are both EOL and not reliably
+    installable from `actions/setup-dotnet` in our `[ windows-2025,
+    ubuntu-24.04 ]` matrix; net6.0 covers every Cake-2-era host
+    (cake.tool 2.x runs on net6.0). CCG0009 ("recommended Cake 6.0.0")
+    stays as a warning — we're deliberately on Cake.Core 2.0.0 for this
     release; it resolves naturally at the eventual 6.0.0 catch-up.
   -->
   <ItemGroup>
-    <CakeContribGuidelinesOmitTargetFramework Include="net461" />
+    <CakeContribGuidelinesOmitTargetFramework Include="netcoreapp3.1" />
     <CakeContribGuidelinesOmitTargetFramework Include="net5.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Cake.Common" Version="1.0.0" PrivateAssets="All" />
-    <PackageReference Include="Cake.Core" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="Cake.Common" Version="2.0.0" PrivateAssets="All" />
+    <PackageReference Include="Cake.Core" Version="2.0.0" PrivateAssets="All" />
     <PackageReference Include="Cake.Addin.Analyzer" Version="0.1.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
