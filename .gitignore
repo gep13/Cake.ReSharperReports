@@ -343,4 +343,7 @@ tools/**
 # Build Related
 BuildArtifacts/*
 
+# Cake / language-service cache artifacts (created by `dotnet build`)
+*.lscache
+
 .DS_Store
