@@ -1,6 +1,10 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 
+# Shell scripts must always use LF line endings — CRLF in the shebang
+# causes "bad interpreter" errors when CI runs the script on Linux.
+*.sh    text eol=lf
+
 # Custom for Visual Studio
 *.cs     diff=csharp
 
