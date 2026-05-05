@@ -41,7 +41,7 @@ namespace Cake.ReSharperReports.Tests
                 Assert.Equal(expected, result.Path.FullPath);
             }
 
-            [Theory]
+            [WindowsTheory]
             [InlineData("C:/ReSharperReports/ReSharperReports.exe", "C:/ReSharperReports/ReSharperReports.exe")]
             public void Should_Use_ReSharperReports_Runner_From_Tool_Path_If_Provided_On_Windows(string toolPath, string expected)
             {
@@ -142,7 +142,7 @@ namespace Cake.ReSharperReports.Tests
                 Assert.Equal("ReSharperReports: Process returned an error (exit code 1).", result.Message);
             }
 
-            [Fact]
+            [WindowsFact]
             public void Should_Set_Xsl_File()
             {
                 // Given
@@ -155,7 +155,7 @@ namespace Cake.ReSharperReports.Tests
                 Assert.Equal("transform -i \"c:/temp/input.xml\" -o \"c:/temp/output.html\" -x \"C:/temp/input.xsl\"", result.Args);
             }
 
-            [Fact]
+            [WindowsFact]
             public void Should_Set_Log_File()
             {
                 // Given
