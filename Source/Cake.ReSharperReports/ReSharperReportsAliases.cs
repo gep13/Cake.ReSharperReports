@@ -87,20 +87,9 @@ namespace Cake.ReSharperReports
         [CakeMethodAlias]
         public static void ReSharperReports(this ICakeContext context, FilePath inputFilePath, FilePath outputFilePath, ReSharperReportsSettings settings)
         {
-            if (context == null)
-            {
-                throw new ArgumentNullException("context");
-            }
-
-            if (inputFilePath == null)
-            {
-                throw new ArgumentNullException("inputFilePath");
-            }
-
-            if (outputFilePath == null)
-            {
-                throw new ArgumentNullException("outputFilePath");
-            }
+            ArgumentNullException.ThrowIfNull(context);
+            ArgumentNullException.ThrowIfNull(inputFilePath);
+            ArgumentNullException.ThrowIfNull(outputFilePath);
 
             var runner = new ReSharperReportsRunner(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
             runner.Run(inputFilePath, outputFilePath, settings);
