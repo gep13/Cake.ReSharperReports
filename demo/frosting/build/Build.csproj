@@ -9,6 +9,6 @@
     <Reference Include="Cake.ReSharperReports">
       <HintPath>$(MSBuildProjectDirectory)\..\..\..\BuildArtifacts\temp\_PublishedLibraries\Cake.ReSharperReports\net8.0\Cake.ReSharperReports.dll</HintPath>
     </Reference>
-    <PackageReference Include="Cake.Frosting" Version="5.1.0" />
+    <PackageReference Include="Cake.Frosting" Version="6.1.0" />
   </ItemGroup>
 </Project>
