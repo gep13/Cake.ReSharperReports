@@ -1,4 +1,4 @@
-#reference "../../BuildArtifacts/temp/_PublishedLibraries/Cake.ReSharperReports/net6.0/Cake.ReSharperReports.dll"
+#reference "../../BuildArtifacts/temp/_PublishedLibraries/Cake.ReSharperReports/net8.0/Cake.ReSharperReports.dll"
 
 using Cake.ReSharperReports;
 
