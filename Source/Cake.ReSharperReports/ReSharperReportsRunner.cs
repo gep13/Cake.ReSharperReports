@@ -11,7 +11,7 @@ namespace Cake.ReSharperReports
     /// </summary>
     public sealed class ReSharperReportsRunner : Tool<ReSharperReportsSettings>
     {
-        private readonly ICakeEnvironment _environment;
+        private readonly ICakeEnvironment environment;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ReSharperReportsRunner" /> class.
@@ -23,7 +23,7 @@ namespace Cake.ReSharperReports
         public ReSharperReportsRunner(IFileSystem fileSystem, ICakeEnvironment environment, IProcessRunner processRunner, IToolLocator toolLocator)
             : base(fileSystem, environment, processRunner, toolLocator)
         {
-            _environment = environment;
+            this.environment = environment;
         }
 
         /// <summary>
@@ -74,21 +74,21 @@ namespace Cake.ReSharperReports
             builder.Append("transform");
 
             builder.Append("-i");
-            builder.AppendQuoted(inputFilePath.MakeAbsolute(_environment).FullPath);
+            builder.AppendQuoted(inputFilePath.MakeAbsolute(environment).FullPath);
 
             builder.Append("-o");
-            builder.AppendQuoted(outputFilePath.MakeAbsolute(_environment).FullPath);
+            builder.AppendQuoted(outputFilePath.MakeAbsolute(environment).FullPath);
 
             if (settings.XslFilePath != null)
             {
                 builder.Append("-x");
-                builder.AppendQuoted(settings.XslFilePath.MakeAbsolute(_environment).FullPath);
+                builder.AppendQuoted(settings.XslFilePath.MakeAbsolute(environment).FullPath);
             }
 
             if (settings.LogFilePath != null)
             {
                 builder.Append("-l");
-                builder.AppendQuoted(settings.LogFilePath.MakeAbsolute(_environment).FullPath);
+                builder.AppendQuoted(settings.LogFilePath.MakeAbsolute(environment).FullPath);
             }
 
             return builder;
